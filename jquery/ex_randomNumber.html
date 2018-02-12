@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			random();
+		});
+		function random(){
+			var max = 999;
+			var min = -999;
+			var num1 = Math.floor(Math.random() * (max - min)) + min;
+			var num2 = Math.floor(Math.random() * (max - min)) + min;
+			$("#number1").text(num1);
+			$("#number2").text(num2);
+			$("#hidden_ans").val(num1+num2);
+		}
+		function check_answer(){
+			var checkans = parseInt($("#answer").val());
+			var ans = parseInt($("#hidden_ans").val());
+			if(checkans == ans){
+				$("#output").text("That's correct.").css("color","green");
+			}else{
+				$("#output").text("That's wrong.The answer is "+ans+".").css("color","red");
+			}
+		}
+	</script>
+</head>
+<body>
+	<center>
+        <h1>Ex - Randdom Number for Answer</h1>
+        <hr>
+        <button onclick="random()">Randdom Number</button>
+        <br><br>
+        <span id="number1"></span> + <span id="number2"></span> = <input type="number" id="answer">
+        <input type="hidden" id="hidden_ans">
+        <br><br>
+        <button onclick="check_answer()">Send Answer</button>
+        <br><br>
+        Result : <span id="output"></span>
+    </center>
+</body>
+</html>
